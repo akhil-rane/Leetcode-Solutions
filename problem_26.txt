@@ -1,0 +1,28 @@
+public class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+    	int i=0,j,diff,k;
+    	int n = nums.length;
+        
+        if(n==1||n==0)
+            return n;
+        
+    	while(i<n-1){
+            if(nums[i]==nums[i+1]){
+                j=i+1;
+    			
+                while(j<n&&nums[i]==nums[j])
+    				j++;
+    			
+                diff = j-(i+1);
+    			
+                	for (k = j; k <n; k++){
+                        	nums[k-diff] = nums[k];                    
+			}    			
+    		n=n-diff;
+    		}  
+    		i++;
+    	}        
+    	return n;
+    }
+}
