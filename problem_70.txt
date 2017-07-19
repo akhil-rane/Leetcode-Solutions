@@ -1,0 +1,14 @@
+public class Solution {
+    public int climbStairs(int n) {
+        if(n==1)
+            return 1;
+        int i=1,f1=1,f2=1,sum=0;
+        while(i<n){
+            sum=f1+f2;
+            f1=f2;
+            f2=sum;
+            i++;
+        }
+        return sum;
+    }
+}
