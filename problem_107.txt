@@ -10,17 +10,11 @@ public class Solution {
     
     public void levelOrdrBottom(TreeNode root, LinkedList<List<Integer>> list, int level){
     	level++;
-        if(root!=null&&root.left==null&&root.right==null){ 
-            if(list.size()==level)
-                list.addFirst(new LinkedList<Integer>());
-            list.get(list.size()-1-level).add(root.val);
-        }
-    	else if(root!=null){
-    		if(list.size()==level)
-                list.addFirst(new LinkedList<Integer>());
-            list.get(list.size()-1-level).add(root.val);
-    		levelOrdrBottom(root.left,list,level);
-    		levelOrdrBottom(root.right,list,level);
-    	}
+        if(root==null) return;
+    	if(list.size()==level)  list.addFirst(new LinkedList<Integer>());
+        list.get(list.size()-1-level).add(root.val);
+    	levelOrdrBottom(root.left,list,level);
+    	levelOrdrBottom(root.right,list,level);
+    	
     }
 }
