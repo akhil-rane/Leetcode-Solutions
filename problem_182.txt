@@ -20,4 +20,4 @@ For example, your query should return the following for the above table:
 
 select Email
 from Person
-group by Email having count(id)>1 
+group by Email having count(*)>1 
