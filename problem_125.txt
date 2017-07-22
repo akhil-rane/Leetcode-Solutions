@@ -1,0 +1,35 @@
+public class Solution {
+    public boolean isPalindrome(String s) {
+        if(s.isEmpty()||s.equals(""))
+        	return true;
+        int i=0,j=s.length()-1;
+        Character ci,cj;
+        while(i<j)
+        {
+        	ci=s.charAt(i);
+        	cj=s.charAt(j);
+        	if(!isLetter(ci)&&!isDigit(ci)){
+        		i++;
+        		continue;
+        	}
+        	else if(!isLetter(cj)&&!isDigit(cj)){
+        		j--;
+        		continue;
+        	}
+        	else if(isLetter(ci)&&isDigit(cj)||isLetter(cj)&&isDigit(ci)) return false;
+        	else if(ci!=cj&&Math.abs(ci-cj)!=32) return false;
+        	i++; j--;
+        }
+        return true;    
+    }
+    public boolean isLetter (Character ch){
+    	if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+    		return true;
+    	return false;
+    }
+    public boolean isDigit (Character ch){
+    	if(ch >= '0' && ch <= '9')
+    		return true;
+    	return false;
+    }
+}
