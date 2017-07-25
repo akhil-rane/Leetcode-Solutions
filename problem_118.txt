@@ -1,0 +1,41 @@
+/*
+Problem Description:
+Given numRows, generate the first numRows of Pascal's triangle.
+
+For example, given numRows = 5,
+Return
+
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    public List<List<Integer>> generate(int numRows) {   	
+    	List<List<Integer>> listOfLists = new ArrayList<List<Integer>>();
+    	if(numRows==0) return listOfLists;
+        List<Integer> previousList = new ArrayList<Integer>(),newList;
+        previousList.add(1);
+        listOfLists.add(previousList);
+        int i=1,previousListlen;
+    	while(i<numRows){
+    		newList = new ArrayList<Integer>();
+    		newList.add(1);
+    		previousListlen = previousList.size()-1; 
+            for (int j = 0; j < previousListlen; j++)
+            	newList.add(previousList.get(j)+previousList.get(j+1));
+            newList.add(1);
+            listOfLists.add(newList);
+            previousList=newList;
+            i++;
+    	}
+    	return listOfLists;
+    }
+}
