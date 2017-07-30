@@ -1,0 +1,22 @@
+/*
+Problem Description:
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+*/
+public class Solution {
+	public int titleToNumber(String s) {
+		int result=s.charAt(0)-64,i,len=s.length();
+		for (i = 1; i < len; i++)
+			result=(26*result)+(s.charAt(i)-64);
+		return result;
+	}
+}
