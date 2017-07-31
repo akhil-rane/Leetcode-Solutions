@@ -1,0 +1,21 @@
+/*
+Problem Description:
+Reverse a singly linked list.
+*/
+public class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head==null) return null;
+        else if(head.next==null) return head;
+        ListNode first=head,second=first.next,third = second.next;
+        head.next=null;
+        while(third!=null){
+        	second.next=first;
+        	first=second;
+        	second=third;
+        	third=third.next;
+        }
+        second.next=first;
+        first=second;
+        return first;
+    }
+}
