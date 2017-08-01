@@ -1,0 +1,18 @@
+/*
+Problem Description:
+Rotate an array of n elements to the right by k steps.
+
+For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+*/
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        Queue<Integer> queue = new LinkedList<Integer>();
+     	int rotationLimt=nums.length-(k%nums.length),i=0,j=0;
+        while(i<rotationLimt) queue.add(nums[i++]);
+        while(i<nums.length) nums[j++]=nums[i++];
+        while(j<nums.length) nums[j++]=queue.poll();
+    }
+}
