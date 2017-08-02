@@ -1,0 +1,40 @@
+/*
+Problem Description:
+Reverse digits of an integer.
+
+Example1: x = 123, return 321
+Example2: x = -123, return -321
+*/
+public class Solution {
+	public int reverse(int x) {
+		
+		if(x>=Integer.MAX_VALUE||x<=Integer.MIN_VALUE)
+				return 0;
+		try
+		{
+			boolean isNegative = ( x < 0) ? true : false;
+			x= Math.abs(x);
+			int result = 0;
+	       
+			while (x != 0) {
+			   
+				long check = (long)result * 10l;
+				if(check>=Integer.MAX_VALUE)
+					return 0;
+				
+				result = (int)check + x % 10;		    
+			    
+			    x = x / 10;      
+			}
+						
+
+			if(isNegative)
+				return (0-result);
+
+			return result;
+		}
+		catch(Exception e){
+			return 0;
+		}
+	}
+}
