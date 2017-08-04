@@ -1,0 +1,17 @@
+/*
+Problem Description
+Reverse bits of a given 32 bits unsigned integer.
+
+For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).
+*/
+public class Solution {    
+    public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 31; i++) {  // 1) we are skipping operation on last bit here
+        	result = result + (n & 1);  // 2) extracting last bit from n and adding it to result
+            n = n >> 1;                 // 3) removing last bit from n          
+            result = result << 1;       // 4) padding zero on the right to the result to make space for next addition 
+        }   	
+        return result + (n & 1);        // performing 32th bit addition here as (4) is not required
+    }
+}
