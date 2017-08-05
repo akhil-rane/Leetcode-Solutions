@@ -1,0 +1,21 @@
+/*
+Problem Description
+Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+
+Example:
+Given a = 1 and b = 2, return 3.
+*/
+public class Solution {
+    public int getSum(int a, int b) {
+        int carry = 0,result=0,aBit,bBit;
+    	for (int i = 0; i < 32; i++) {
+			aBit=a&1;
+			bBit=b&1;
+			result=(((aBit^bBit)^carry)<<i)|result;
+			carry=(carry&(aBit|bBit))|(aBit&bBit);		
+			a>>=1;
+			b>>=1;
+		}
+    	return result;
+    }
+}
