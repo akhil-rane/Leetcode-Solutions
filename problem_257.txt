@@ -1,0 +1,39 @@
+/*
+Problem Description:
+
+Given a binary tree, return all root-to-leaf paths.
+
+For example, given the following binary tree:
+
+   1
+ /   \
+2     3
+ \
+  5
+All root-to-leaf paths are:
+
+["1->2->5", "1->3"]
+*/
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+    	
+    	List<String> list = new ArrayList<String>();
+        if(root==null) return list;
+    	String str = String.valueOf(root.val);
+    	if(root.left==null&&root.right==null) list.add(str);
+        if(root.left!=null) binaryTreePath(root.left, list, str);
+        if(root.right!=null) binaryTreePath(root.right, list, str);
+    	return list;
+    }
+    
+    public void binaryTreePath(TreeNode root,List<String> list, String str){
+    	str=str+"->"+root.val;
+        if(root.left==null&&root.right==null) list.add(str);
+        if(root.left!=null) binaryTreePath(root.left, list, str);
+        if(root.right!=null) binaryTreePath(root.right, list, str);
+    	
+    }
+}
