@@ -1,0 +1,25 @@
+import java.util.HashMap;
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        
+    	  HashMap<Character,Character> map = new HashMap<>();
+    	  int i = 0, len = s.length();
+        
+    	  for (i = 0; i < len; i++) {
+			
+    		  Character a = s.charAt(i);
+    		  Character b = t.charAt(i);
+    		  
+              if(map.containsKey(a)) {
+    			  if(map.get(a).equals(b)) continue;
+    			  return false;
+    		  }
+    		  else {
+    			  if(map.containsValue(b)) return false;
+                  map.put(a, b);
+    		  }
+		}
+    	  	return true;
+    }
+}
