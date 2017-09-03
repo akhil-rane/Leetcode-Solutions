@@ -1,0 +1,24 @@
+class Solution {
+
+	public int countPrimes(int n) {
+		
+        if(n==1||n==0) return 0;
+		int count = 0;
+		boolean[] markers = new boolean[n];
+      	
+		for (int i = 3; i < n ; i+=2) {
+			if(markers[i]==true) continue;
+			int j=3;
+			int temp=j*i;
+            count++;
+			while(temp<n) {
+				markers[temp] = true;
+				j+=2;
+                temp=i*j;
+			}
+		}
+		
+		if(n>2) count++;
+		return count;
+	}
+}
