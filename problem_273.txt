@@ -1,0 +1,36 @@
+class Solution {
+    public String numberToWords(int num) {
+    	if(num==0) return "Zero";	
+      	
+        String[] temp1 ={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
+    		String[] temp2 = {"Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+    		String[] temp3 = {"Thousand","Million","Billion"};
+    		
+    		String[] sList = new String[4];
+    		
+            String result="",word;
+    		int j=0,i,hundredthDigit,tenthDigit;
+        
+    		while(num>0) {
+    			i = num%1000;
+                word="";
+				hundredthDigit=i/100;
+				if(hundredthDigit!=0) word+=temp1[hundredthDigit]+" Hundred";
+				i=i%100;
+				tenthDigit=i/10;
+				i=i%10;
+				if(tenthDigit>1) word+=" "+temp2[tenthDigit-2]+" "+temp1[i];
+				else word+=" "+temp1[tenthDigit*10+i];
+				sList[j++]=word;
+                
+                num=num/1000;
+    		}
+
+    		for (int k = 1; k < j; k++) {
+				if(sList[k].trim().equals("")) continue;
+                result=sList[k]+" "+temp3[k-1]+" "+result;
+		}
+
+    		return (result+sList[0]).replace("  "," ").trim();
+    }
+}
