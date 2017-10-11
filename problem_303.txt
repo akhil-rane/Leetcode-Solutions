@@ -1,0 +1,26 @@
+class NumArray {
+    
+    int nums[];
+    int sumAtIndex[];
+    
+    
+    public NumArray(int[] nums) {
+        this.nums=nums;
+        if(nums.length==0) return; 
+        this.sumAtIndex = new int[nums.length];
+        sumAtIndex[0]=nums[0];
+        calculateSumAtIndex(nums);
+    }
+    
+    public int sumRange(int i, int j) {
+        if(i==0) return sumAtIndex[j];
+        else return (sumAtIndex[j]-sumAtIndex[i-1]);
+    }
+    
+    public void calculateSumAtIndex(int[] nums)
+    {
+        for(int k=1; k<nums.length; k++){
+            sumAtIndex[k]=sumAtIndex[k-1]+nums[k];
+        } 
+    }    
+}
