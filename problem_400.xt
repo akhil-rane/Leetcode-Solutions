@@ -1,0 +1,29 @@
+class Solution {
+    public int findNthDigit(int n) {
+    		int len = 1;
+    		long count = 9;
+    		long number = 9;
+        
+
+        
+        while(n>= len*count) {
+        	 	n-=len*count;
+        		len+=1;
+        	 	count*=10;
+                number+=count;
+        }
+        
+        if(n%len!=0) number = (number-count)+(n/len)+1;
+        else number = (number-count)+(n/len);
+        
+        int index = 0;
+        
+        if(n==0) index = 0 ;
+        else if (n%len==0) index = len-1;
+        else index = n%len-1;
+
+        
+        return Integer.parseInt(String.valueOf(number).charAt(index)+"");
+        	
+    }
+}
