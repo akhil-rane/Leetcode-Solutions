@@ -3,38 +3,38 @@ class Solution {
         
         if(head==null) return head;
         
-    	RandomListNode temp = head;
+    	RandomListNode originalListPointer = head;
         
-        RandomListNode head1 = new RandomListNode(head.label);
+        RandomListNode headOfNewList = new RandomListNode(head.label);
         
-        temp=temp.next;
+        RandomListNode copyListPointer = headOfNewList;
         
-        RandomListNode current = head1;
+        Map<RandomListNode,RandomListNode> map = new HashMap<>();
         
-        Map<Integer,RandomListNode> map = new HashMap<>();
+        map.put(originalListPointer,copyListPointer);
         
-        map.put(current.label,current);
+        originalListPointer=originalListPointer.next;
         
-        while(temp!=null) {
-                RandomListNode node = new RandomListNode(temp.label);
-                map.put(node.label,node);
-                current.next=node;
-                current = node;
-                temp=temp.next;
+        while(originalListPointer!=null) {
+                RandomListNode node = new RandomListNode(originalListPointer.label);
+                map.put(originalListPointer,node);
+                copyListPointer.next=node;
+                copyListPointer = node;
+                originalListPointer=originalListPointer.next;
         }
         
-        temp = head;
+        originalListPointer = head;
         
-        current =head1;
+        copyListPointer = headOfNewList;
         
-        while (temp!=null){
+        while (originalListPointer!=null){
             
-            if(temp.random!=null)current.random = map.get(temp.random.label);
+            if(originalListPointer.random!=null) copyListPointer.random = map.get(originalListPointer.random);
             
-            current = current.next;
-            temp = temp.next;
+            copyListPointer = copyListPointer.next;
+            originalListPointer = originalListPointer.next;
         }
         
-        return head1;
+        return headOfNewList;
     }
 }
