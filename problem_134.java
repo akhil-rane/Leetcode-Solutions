@@ -3,27 +3,21 @@ class Solution {
       int start = 0;
       int fuelLeft = 0;
       
-      int totalGas = 0;
-      int totalCost = 0;
-      
-      for (int i = 0; i < cost.length; i++) totalCost+=cost[i];
-      for (int i = 0; i < gas.length; i++)  totalGas+=gas[i];
-      
-      if(totalGas<totalCost) return -1;
+      int total = 0;
       
       for (int i = 0; i < cost.length; i++) {
-    	  	
+        
     	if(fuelLeft<0) {
+           
   	  	   start = i;
   	  	   fuelLeft = 0;
   	  	}
-    	  	
-        fuelLeft += gas[i] - cost[i];
-    	  	
-    	if((i+1)%cost.length==start) return start;
-    	else if(i==cost.length-1) i = -1;
+        
+        fuelLeft += gas[i] - cost[i];  
+        total+=fuelLeft;
+          
       }
          
-      return -1;
+      return total<0 ? -1 : start ;
     }
 }
