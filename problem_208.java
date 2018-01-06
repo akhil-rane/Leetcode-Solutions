@@ -6,7 +6,7 @@ class Trie {
     /** Initialize your data structure here. */
     public Trie() {
         root = new TrieNode();
-        root.c=true;
+        root.wordEnd=true;
     }
     
     /** Inserts a word into the trie. */
@@ -22,7 +22,7 @@ class Trie {
             current = current.next[c-'a'];      
         }     
         
-        current.c = true;
+        current.wordEnd = true;
         
         
     }
@@ -45,7 +45,7 @@ class Trie {
         
         }
             
-        return current.c;
+        return current.wordEnd;
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
@@ -68,7 +68,7 @@ class Trie {
 
 class TrieNode{
     
-    boolean c;
+    boolean wordEnd;
     TrieNode[] next;  
     
 }
